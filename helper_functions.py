@@ -5,6 +5,13 @@ from sklearn.metrics import mean_squared_error
 
 def rmse(inputs, targets):
   return np.sqrt(mean_squared_error(inputs, targets))
+
+def eval_model(model):
+  train_preds = model.predict(train_x)
+  val_preds = model.predict(val_x)
+  train_rmse = rmse(train_preds, train_target)
+  val_rmse = rmse(val_preds, val_target)
+  return train_rmse, val_rmse, train_preds, val_preds
   
 def test_params(Class_model, train_inputs,
                 val_inputs, train_targets,
